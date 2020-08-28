@@ -11,8 +11,8 @@ This is a very simple SpringBoot application project highlighting how can we wor
 6. Aha! We are done, verified !
 
 ## Elements
-1. Springboot maven project with web dependency
-2. Azure webapp 
-3. Azure DevOps CI/CD pipeline to Azure webapp
-4. Code coverage by Cobertura
-5. Code quality check - checkstyle, PMD, findbugs
+* Springboot maven project with web dependency
+* Azure webapp 
+* Azure DevOps CI/CD pipeline to Azure webapp
+* Code coverage by Cobertura
+* Code quality check - checkstyle, PMD, findbugs

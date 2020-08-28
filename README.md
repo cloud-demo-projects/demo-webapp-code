@@ -13,4 +13,6 @@ Steps followed-
 Elements
 1. Springboot maven project with web dependency
 2. Azure webapp 
-2. Azure DevOps CI/CD pipeline to Azure webapp
+3. Azure DevOps CI/CD pipeline to Azure webapp
+4. Code coverage by Cobetura
+5. Code quality check - checkstyle, PMD, findbugs

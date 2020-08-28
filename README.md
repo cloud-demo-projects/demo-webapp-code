@@ -9,3 +9,8 @@ Steps followed-
 4. Configured the Azure webapp maven plugin 
 5. Deployed the project in Azure subscription through authenticated client (Azure CLI)
 6. Aha! We are done, verified !
+
+Elements
+1. Springboot maven project with web dependency
+2. Azure webapp 
+2. Azure DevOps CI/CD pipeline to Azure webapp

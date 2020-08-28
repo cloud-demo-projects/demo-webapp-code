@@ -77,6 +77,13 @@ stages:
         artifactoryService: 'jfrog-cloud-account'
         buildName: '$(Build.DefinitionName)'
         buildNumber: '$(Build.BuildNumber)'
+    - task: ArtifactoryXrayScan@1
+      inputs:
+        artifactoryService: 'jfrog-cloud-account'
+        buildName: '$(Build.DefinitionName)'
+        buildNumber: '$(Build.BuildNumber)'
+        allowFailBuild: true
+
 
 # - stage: Deploy
 #   displayName: Deploy stage

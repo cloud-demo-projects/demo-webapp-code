@@ -47,6 +47,17 @@ stages:
         pmdRunAnalysis: true
         findBugsRunAnalysis: true
 
+    - task: ArtifactoryMaven@2
+      inputs:
+        mavenPomFile: 'pom.xml'
+        goals: 'install'
+        artifactoryResolverService: 'jfrog-cloud-account'
+        targetResolveReleaseRepo: 'libs-release'
+        targetResolveSnapshotRepo: 'libs-snapshot'
+        artifactoryDeployService: 'jfrog-cloud-account'
+        targetDeployReleaseRepo: 'libs-release-local'
+        targetDeploySnapshotRepo: 'libs-snapshot-local'
+
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
       inputs:

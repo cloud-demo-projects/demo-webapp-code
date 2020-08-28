@@ -72,6 +72,12 @@ stages:
     - upload: $(Build.ArtifactStagingDirectory)
       artifact: drop
 
+    - task: ArtifactoryPublishBuildInfo@1
+      inputs:
+        artifactoryService: 'jfrog-cloud-account'
+        buildName: '$(Build.DefinitionName)'
+        buildNumber: '$(Build.BuildNumber)'
+
 # - stage: Deploy
 #   displayName: Deploy stage
 #   dependsOn: Build

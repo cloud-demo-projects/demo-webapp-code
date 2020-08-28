@@ -14,5 +14,5 @@ Elements
 1. Springboot maven project with web dependency
 2. Azure webapp 
 3. Azure DevOps CI/CD pipeline to Azure webapp
-4. Code coverage by Cobetura
+4. Code coverage by Cobertura
 5. Code quality check - checkstyle, PMD, findbugs

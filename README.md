@@ -16,3 +16,4 @@ This is a very simple SpringBoot application project highlighting how can we wor
 * Azure DevOps CI/CD pipeline to Azure webapp
 * Code coverage by Cobertura
 * Code quality check - checkstyle, PMD, findbugs
+* CI/CD pipeline with JFrog artifactory integration

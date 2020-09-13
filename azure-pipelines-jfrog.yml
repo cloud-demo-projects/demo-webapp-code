@@ -1,0 +1,59 @@
+# Maven package Java project Web App to Linux on Azure
+# Build your Java project and deploy it to Azure as a Linux web app
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+
+variables:
+
+  # Azure Resource Manager connection created during pipeline creation
+  azureSubscription: '7f3ec497-9fd4-42cb-924d-c73e684db374'
+  
+  # Web app name
+  webAppName: 'tfvmex-webapp'
+
+  # Environment name
+  environmentName: 'tfvmex-webapp'
+  
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: MavenPackageAndPublishArtifacts
+    displayName: Maven Package and Publish Artifacts
+    pool:
+      vmImage: $(vmImageName)
+    
+    steps:
+    - task: ArtifactoryMaven@2
+      inputs:
+        mavenPomFile: 'pom.xml'
+        goals: 'package'
+        artifactoryResolverService: 'jfrog-cloud-account'
+        targetResolveReleaseRepo: 'libs-release'
+        targetResolveSnapshotRepo: 'libs-snapshot'
+        artifactoryDeployService: 'jfrog-cloud-account'
+        targetDeployReleaseRepo: 'libs-release-local'
+        targetDeploySnapshotRepo: 'libs-snapshot-local'
+        collectBuildInfo: true
+        buildName: '$(Build.DefinitionName)'
+        buildNumber: '$(Build.BuildNumber)'
+        includeEnvVars: true
+
+    - task: ArtifactoryPublishBuildInfo@1
+      inputs:
+        artifactoryService: 'jfrog-cloud-account'
+        buildName: '$(Build.DefinitionName)'
+        buildNumber: '$(Build.BuildNumber)'
+        
+    # - task: ArtifactoryXrayScan@1
+    #   inputs:
+    #     artifactoryService: 'jfrog-cloud-account'
+    #     buildName: '$(Build.DefinitionName)'
+    #     buildNumber: '$(Build.BuildNumber)'
+    #     allowFailBuild: true

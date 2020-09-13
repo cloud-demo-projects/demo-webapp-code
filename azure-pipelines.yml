@@ -8,8 +8,8 @@ trigger:
 
 variables:
 
-  # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: '7f3ec497-9fd4-42cb-924d-c73e684db374'
+  # # Azure Resource Manager connection created during pipeline creation
+  # azureSubscription: '7f3ec497-9fd4-42cb-924d-c73e684db374'
   
   # Web app name
   webAppName: 'tfvmex-webapp'

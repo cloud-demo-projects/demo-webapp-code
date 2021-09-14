@@ -1,23 +1,8 @@
-# Maven package Java project Web App to Linux on Azure
-# Build your Java project and deploy it to Azure as a Linux web app
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
 - master
 
-variables:
-
-  # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: '7f3ec497-9fd4-42cb-924d-c73e684db374'
-  
-  # Web app name
-  webAppName: 'tfvmex-webapp'
-
-  # Environment name
-  environmentName: 'tfvmex-webapp'
-  
-  # Agent VM image name
+variables:  
+  webAppName: 'test-webapp9'
   vmImageName: 'ubuntu-latest'
 
 stages:
@@ -27,8 +12,7 @@ stages:
   - job: MavenPackageAndPublishArtifacts
     displayName: Maven Package and Publish Artifacts
     pool:
-      vmImage: $(vmImageName)
-    
+      vmImage: $(vmImageName)    
     steps:
     - task: Maven@3
       displayName: 'Maven Package'
@@ -72,9 +56,9 @@ stages:
         deploy:
           steps:
           - task: AzureWebApp@1
-            displayName: 'Azure Web App Deploy: tfvmex-webapp'
+            displayName: 'Azure Web App Deploy: test-webapp9'
             inputs:
-              azureSubscription: $(azureSubscription)
-              appType: webAppLinux
-              appName: $(webAppName)
+              azureSubscription: 'Nipun Bahri Subscription(bf0f6779-86d2-467e-8226-10f92a8ad378)'
+              appType: 'webAppLinux'
+              appName: '$(webAppName)'
               package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
